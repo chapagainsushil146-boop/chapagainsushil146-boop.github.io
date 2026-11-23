@@ -2059,6 +2059,725 @@
         }
       }
     </style>
+    <style id="cinematic-direction">
+      /* Original industrial-cinema art direction — layers the existing identity rather than replacing it. */
+      :root {
+        --steel: #c8c8c8;
+        --shadow: #050505;
+        --cinema-line: rgba(224, 224, 224, 0.16);
+        --cinema-glow: rgba(220, 220, 220, 0.13);
+      }
+
+      #intro {
+        background:
+          radial-gradient(
+            ellipse at 50% 48%,
+            rgba(210, 210, 210, 0.055),
+            transparent 38%
+          ),
+          #050505;
+      }
+
+      #intro::before,
+      #intro::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      #intro::before {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.12) 52%,
+            rgba(0, 0, 0, 0.54)
+          ),
+          url("portfolio-cinematic-city.jpg") center 53% / cover no-repeat;
+        opacity: 0.28;
+        mask-image: linear-gradient(
+          transparent,
+          #000 24%,
+          #000 78%,
+          transparent
+        );
+        animation: introLandscape 12s ease-in-out infinite alternate;
+      }
+
+      #intro::after {
+        background:
+          linear-gradient(
+            180deg,
+            transparent 48%,
+            rgba(205, 205, 205, 0.055) 49%,
+            transparent 50%
+          ),
+          repeating-linear-gradient(
+            0deg,
+            transparent 0 3px,
+            rgba(255, 255, 255, 0.012) 4px
+          );
+        opacity: 0.42;
+        mix-blend-mode: screen;
+      }
+
+      .intro-inner {
+        width: min(920px, 90vw);
+      }
+
+      .intro-kicker {
+        margin-bottom: 24px;
+        color: #888;
+        font: 9px/1.5 var(--mono);
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        opacity: 0;
+        animation: introRise 0.8s 0.04s var(--ease) forwards;
+      }
+
+      .intro-name {
+        font-size: clamp(76px, 17vw, 220px);
+        font-weight: 760;
+        letter-spacing: -0.105em;
+        text-transform: uppercase;
+        color: transparent;
+        background: linear-gradient(
+          112deg,
+          #fff 4%,
+          #919191 31%,
+          #f5f5f5 47%,
+          #777 59%,
+          #fff 74%,
+          #aaa 100%
+        );
+        background-size: 220% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 13px 32px rgba(255, 255, 255, 0.12));
+        animation:
+          introName 1.45s 0.16s var(--ease) both,
+          metalSweep 2.4s 0.65s ease-in-out both;
+      }
+
+      .intro-tag {
+        margin-top: 30px;
+        font-size: 10px;
+        letter-spacing: 0.48em;
+        color: #d0d0d0;
+        animation-delay: 0.8s;
+      }
+
+      .intro-line {
+        width: min(540px, 76vw);
+        margin-top: 28px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #fff 24%,
+          #777 50%,
+          #fff 76%,
+          transparent
+        );
+        box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+      }
+
+      .intro-glow {
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(
+          ellipse,
+          rgba(230, 230, 230, 0.11),
+          rgba(130, 130, 130, 0.035) 35%,
+          transparent 70%
+        );
+      }
+
+      .skip-intro {
+        border-bottom: 1px solid #444;
+      }
+
+      @keyframes introLandscape {
+        from {
+          transform: scale(1.02) translateX(0);
+        }
+        to {
+          transform: scale(1.09) translateX(-1.4%);
+        }
+      }
+
+      @keyframes introRise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes introName {
+        from {
+          opacity: 0;
+          transform: translateY(28px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes metalSweep {
+        0% {
+          background-position: 100% 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.17fr) minmax(300px, 0.83fr);
+        gap: 3vw;
+      }
+
+      .hero {
+        --hero-shift-x: 0px;
+        --hero-shift-y: 0px;
+        min-height: min(100svh, 1080px);
+        background:
+          radial-gradient(
+            ellipse at 51% 47%,
+            rgba(255, 255, 255, 0.025),
+            transparent 62%
+          ),
+          #080808;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-atmosphere {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.72;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+
+      .hero-copy {
+        max-width: 820px;
+      }
+
+      .hero .eyebrow {
+        color: #c4c4c4;
+        animation: introRise 0.8s 0.2s both;
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 6.55vw, 94px);
+        line-height: 0.88;
+        letter-spacing: -0.09em;
+        font-weight: 680;
+        text-transform: uppercase;
+        color: transparent;
+        background: linear-gradient(
+          112deg,
+          #fff 0%,
+          #dedede 28%,
+          #8b8b8b 48%,
+          #f3f3f3 65%,
+          #aaa 79%,
+          #fff 100%
+        );
+        background-size: 180% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 10px 28px rgba(255, 255, 255, 0.075));
+        animation:
+          headlineReveal 1.1s 0.3s var(--ease) both,
+          metalSweep 2.8s 0.85s ease-in-out both;
+      }
+
+      .hero h1 .second {
+        color: transparent;
+        background: linear-gradient(
+          105deg,
+          #777 0%,
+          #eee 35%,
+          #8a8a8a 54%,
+          #f5f5f5 68%,
+          #858585 86%,
+          #d3d3d3 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes headlineReveal {
+        from {
+          opacity: 0;
+          clip-path: inset(0 0 100% 0);
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          clip-path: inset(-8% 0 -8% 0);
+          transform: translateY(0);
+        }
+      }
+
+      .hero-intro {
+        max-width: 580px;
+        color: #d0d0d0;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
+        animation: introRise 0.8s 0.58s both;
+      }
+
+      .hero-buttons {
+        animation: introRise 0.8s 0.7s both;
+      }
+      .hero-meta {
+        animation: introRise 0.8s 0.83s both;
+      }
+      .hero-index,
+      .scroll-cue {
+        z-index: 2;
+        color: #aaa;
+      }
+
+      .portrait-stage {
+        perspective: 1400px;
+        transform: translate3d(0, var(--hero-shift-y), 0);
+        transition: transform 0.5s var(--ease);
+      }
+
+      .portrait-frame {
+        border: 1px solid rgba(230, 230, 230, 0.22);
+        box-shadow:
+          0 34px 110px rgba(0, 0, 0, 0.68),
+          0 0 50px rgba(255, 255, 255, 0.035);
+        transform: translate3d(var(--hero-shift-x), 0, 0);
+        transition:
+          transform 0.65s var(--ease),
+          border-color 0.5s;
+      }
+
+      .portrait-frame img {
+        transform: translate3d(
+            calc(var(--hero-shift-x) * -0.35),
+            var(--hero-shift-y),
+            0
+          )
+          scale(1.025);
+        transition:
+          transform 0.8s var(--ease),
+          filter 0.8s;
+      }
+
+      .portrait-frame::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          112deg,
+          transparent 24%,
+          rgba(255, 255, 255, 0.12) 48%,
+          transparent 54%
+        );
+        transform: translateX(-120%);
+        animation: imageSweep 2.2s 1.3s var(--ease) both;
+        mix-blend-mode: screen;
+      }
+
+      @keyframes imageSweep {
+        to {
+          transform: translateX(120%);
+        }
+      }
+
+      .portrait-caption {
+        padding: 22px 18px 16px;
+        background: linear-gradient(0deg, rgba(3, 3, 3, 0.74), transparent);
+      }
+
+      .portrait-sculpture {
+        translate: var(--sculpture-x, 0px) var(--sculpture-y, 0px);
+        transition: translate 0.35s var(--ease);
+        animation: sculptureReveal 1.1s 0.75s var(--ease) both;
+      }
+
+      @keyframes sculptureReveal {
+        from {
+          opacity: 0;
+          scale: 0.8;
+        }
+        to {
+          opacity: 1;
+          scale: 1;
+        }
+      }
+
+      .section {
+        position: relative;
+        isolation: isolate;
+      }
+
+      .section > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-label {
+        color: #bcbcbc;
+      }
+
+      .section-title {
+        text-wrap: balance;
+      }
+
+      .page-head {
+        background-color: #090909;
+        background-image: radial-gradient(
+          ellipse at 82% 34%,
+          rgba(210, 210, 210, 0.08),
+          transparent 35%
+        );
+      }
+
+      .page-head::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.3;
+        background: repeating-linear-gradient(
+          118deg,
+          transparent 0 46px,
+          rgba(255, 255, 255, 0.04) 47px,
+          transparent 48px 86px
+        );
+        mask-image: linear-gradient(90deg, transparent, #000 48%, #000);
+      }
+
+      .page-head > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      #page-about .page-head {
+        background-image:
+          radial-gradient(
+            ellipse at 78% 25%,
+            rgba(220, 220, 220, 0.12),
+            transparent 33%
+          ),
+          linear-gradient(140deg, #080808 30%, #141414 70%, #090909);
+      }
+
+      #page-expertise .page-head {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.027) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.027) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            ellipse at 80% 50%,
+            rgba(230, 230, 230, 0.1),
+            transparent 30%
+          ),
+          #080808;
+        background-size:
+          64px 64px,
+          64px 64px,
+          auto,
+          auto;
+      }
+
+      #page-projects .page-head {
+        background-image:
+          linear-gradient(
+            90deg,
+            #080808 0%,
+            rgba(8, 8, 8, 0.88) 48%,
+            rgba(8, 8, 8, 0.5)
+          ),
+          url("portfolio-cinematic-city.jpg");
+        background-size: cover;
+        background-position: 60% 42%;
+      }
+
+      #page-journey .page-head {
+        background-image:
+          radial-gradient(
+            ellipse at 18% 78%,
+            rgba(210, 210, 210, 0.085),
+            transparent 32%
+          ),
+          linear-gradient(90deg, #080808, #101010 70%, #080808);
+      }
+
+      #page-resume .page-head {
+        background-image: linear-gradient(
+          120deg,
+          #080808,
+          #151515 56%,
+          #090909
+        );
+      }
+
+      #page-contact .page-head {
+        background-image:
+          radial-gradient(
+            ellipse at 82% 80%,
+            rgba(235, 235, 235, 0.11),
+            transparent 34%
+          ),
+          linear-gradient(135deg, #080808, #111 60%, #080808);
+      }
+
+      .page-title {
+        text-transform: uppercase;
+        text-shadow: 0 6px 36px rgba(0, 0, 0, 0.62);
+      }
+
+      .page.active .page-title {
+        animation: headlineReveal 0.85s 0.08s var(--ease) both;
+      }
+
+      #page-about .portrait-placeholder {
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.4);
+      }
+
+      #page-about .philosophy {
+        background-image: radial-gradient(
+          ellipse at 78% 45%,
+          rgba(255, 255, 255, 0.055),
+          transparent 40%
+        );
+      }
+
+      #page-expertise .skill-group {
+        background-image: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.026),
+          transparent 52%
+        );
+      }
+
+      #page-projects .project-row {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+      }
+
+      #page-projects .project-row::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        right: 12%;
+        top: -72px;
+        width: 290px;
+        height: 220px;
+        pointer-events: none;
+        opacity: 0.25;
+        background: radial-gradient(
+          ellipse,
+          rgba(225, 225, 225, 0.14),
+          transparent 65%
+        );
+        transform: rotate(-18deg);
+        transition:
+          opacity 0.45s,
+          transform 0.65s var(--ease);
+      }
+
+      #page-projects .project-row:nth-child(2)::before {
+        background: repeating-radial-gradient(
+          ellipse at 50% 50%,
+          transparent 0 18px,
+          rgba(230, 230, 230, 0.13) 19px 20px,
+          transparent 21px 32px
+        );
+      }
+
+      #page-projects .project-row:nth-child(3)::before {
+        background: repeating-linear-gradient(
+          145deg,
+          transparent 0 13px,
+          rgba(255, 255, 255, 0.1) 14px,
+          transparent 15px 30px
+        );
+      }
+
+      #page-projects .project-row:nth-child(4)::before {
+        background:
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(235, 235, 235, 0.2) 0 1px,
+            transparent 2px
+          ),
+          radial-gradient(ellipse, rgba(210, 210, 210, 0.09), transparent 68%);
+        background-size:
+          13px 13px,
+          auto;
+      }
+
+      #page-projects .project-row:hover::before,
+      #page-projects .project-row.open::before {
+        opacity: 0.72;
+        transform: translateX(-15px) rotate(-8deg) scale(1.08);
+      }
+
+      #page-projects .project-main,
+      #page-projects .project-detail {
+        position: relative;
+        z-index: 1;
+      }
+
+      #page-journey .timeline {
+        border-image: linear-gradient(#ddd, #333 72%, transparent) 1;
+      }
+
+      #page-journey .milestone:before {
+        box-shadow:
+          0 0 0 5px #202020,
+          0 0 22px rgba(240, 240, 240, 0.24);
+      }
+
+      #page-contact .contact-grid {
+        background-image: radial-gradient(
+          ellipse at 86% 8%,
+          rgba(215, 215, 215, 0.045),
+          transparent 36%
+        );
+      }
+
+      .cta,
+      .menu-trigger,
+      .project-main,
+      .text-link {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .cta:active,
+      .menu-trigger:active {
+        transform: translateY(1px);
+      }
+
+      @media (max-width: 850px) {
+        #page-contact .contact-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 42px;
+        }
+        #page-contact .form-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          min-width: 0;
+        }
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr) minmax(260px, 0.82fr);
+        }
+        .hero h1 {
+          font-size: clamp(53px, 8vw, 76px);
+        }
+        .hero-atmosphere {
+          opacity: 0.46;
+        }
+        #page-projects .project-row::before {
+          right: -8%;
+          opacity: 0.18;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        #intro::before {
+          opacity: 0.2;
+          background-position: 58% center;
+        }
+        .intro-kicker {
+          font-size: 8px;
+          letter-spacing: 0.22em;
+        }
+        .intro-tag {
+          letter-spacing: 0.32em;
+        }
+        .hero {
+          padding-top: 116px;
+        }
+        .hero h1 {
+          font-size: clamp(43px, 11vw, 62px);
+          line-height: 0.91;
+        }
+        .hero-atmosphere {
+          opacity: 0.3;
+        }
+        .portrait-stage {
+          transform: none;
+        }
+        .portrait-frame {
+          transform: none;
+        }
+        .portrait-frame img {
+          transform: scale(1.02);
+        }
+        .portrait-sculpture {
+          translate: 0 0;
+        }
+        .page-title {
+          letter-spacing: -0.075em;
+        }
+        #page-projects .project-row::before {
+          right: -22%;
+          width: 220px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .intro-kicker,
+        .intro-name,
+        .intro-tag,
+        .intro-line,
+        .intro-glow,
+        #intro::before,
+        .hero:after,
+        .hero h1,
+        .hero .eyebrow,
+        .hero-intro,
+        .hero-buttons,
+        .hero-meta,
+        .portrait-frame::before,
+        .portrait-sculpture,
+        .page.active .page-title {
+          animation: none !important;
+        }
+        .hero h1 {
+          opacity: 1;
+          clip-path: none;
+        }
+        .hero-atmosphere {
+          opacity: 0.18;
+        }
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -2069,6 +2788,9 @@
     >
       <div class="intro-glow" aria-hidden="true"></div>
       <div class="intro-inner">
+        <div class="intro-kicker">
+          Artificial Intelligence / A learning journey
+        </div>
         <div class="intro-name">SUSHIL</div>
         <div class="intro-tag">TECHNOLOGY &amp; AI</div>
         <div class="intro-line"></div>
@@ -2121,7 +2843,12 @@
         data-page="home"
         aria-label="Home"
       >
-        <div class="hero">
+        <div class="hero" data-atmosphere="hero">
+          <canvas
+            id="hero-atmosphere"
+            class="hero-atmosphere"
+            aria-hidden="true"
+          ></canvas>
           <div class="hero-grid">
             <div class="hero-copy">
               <div class="eyebrow">
@@ -2998,8 +3725,170 @@
             "Opening your email application. Review your message there, then choose Send.";
           window.location.href = href;
         });
+        // Lightweight, local canvas atmosphere: fine silver dust; no WebGL or remote assets.
+        function initHeroAtmosphere() {
+          const canvas = document.querySelector("#hero-atmosphere");
+          const hero = document.querySelector('[data-atmosphere="hero"]');
+          if (!canvas || !hero) return;
+
+          const context = canvas.getContext("2d", { alpha: true });
+          if (!context) return; // The cinematic city image remains the static fallback.
+
+          const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+          const finePointer = matchMedia("(hover: hover) and (pointer: fine)");
+          let width = 0;
+          let height = 0;
+          let pixelRatio = 1;
+          let particles = [];
+          let frame = 0;
+          let active = false;
+          let previousTime = 0;
+
+          function seedParticles() {
+            const density = window.innerWidth < 620 ? 0.000034 : 0.000052;
+            const count = Math.max(
+              18,
+              Math.min(72, Math.round(width * height * density)),
+            );
+            particles = Array.from({ length: count }, () => ({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              radius: 0.35 + Math.random() * 1.05,
+              speed: 0.07 + Math.random() * 0.2,
+              drift: (Math.random() - 0.5) * 0.13,
+              alpha: 0.08 + Math.random() * 0.3,
+              phase: Math.random() * Math.PI * 2,
+            }));
+          }
+
+          function resizeCanvas() {
+            const bounds = hero.getBoundingClientRect();
+            width = Math.max(1, bounds.width);
+            height = Math.max(1, bounds.height);
+            pixelRatio = Math.min(1.5, window.devicePixelRatio || 1);
+            canvas.width = Math.round(width * pixelRatio);
+            canvas.height = Math.round(height * pixelRatio);
+            context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            seedParticles();
+            if (reduceMotion.matches) draw(0, true);
+          }
+
+          function draw(time, staticFrame = false) {
+            context.clearRect(0, 0, width, height);
+            const haze = context.createRadialGradient(
+              width * 0.73,
+              height * 0.42,
+              0,
+              width * 0.73,
+              height * 0.42,
+              width * 0.58,
+            );
+            haze.addColorStop(0, "rgba(225,225,225,0.045)");
+            haze.addColorStop(0.45, "rgba(180,180,180,0.016)");
+            haze.addColorStop(1, "rgba(0,0,0,0)");
+            context.fillStyle = haze;
+            context.fillRect(0, 0, width, height);
+
+            const delta = previousTime ? Math.min(40, time - previousTime) : 16;
+            previousTime = time;
+            for (const particle of particles) {
+              if (!staticFrame && !reduceMotion.matches) {
+                particle.y -= particle.speed * delta * 0.055;
+                particle.x += particle.drift * delta * 0.035;
+                if (particle.y < -3) {
+                  particle.y = height + 3;
+                  particle.x = Math.random() * width;
+                }
+                if (particle.x < -3) particle.x = width + 3;
+                if (particle.x > width + 3) particle.x = -3;
+              }
+              const shimmer =
+                0.78 + Math.sin(time * 0.00072 + particle.phase) * 0.22;
+              context.globalAlpha = particle.alpha * shimmer;
+              context.fillStyle = "#eeeeee";
+              context.beginPath();
+              context.arc(
+                particle.x,
+                particle.y,
+                particle.radius,
+                0,
+                Math.PI * 2,
+              );
+              context.fill();
+            }
+            context.globalAlpha = 1;
+            if (
+              active &&
+              !reduceMotion.matches &&
+              document.visibilityState === "visible"
+            ) {
+              frame = requestAnimationFrame(draw);
+            }
+          }
+
+          function start() {
+            if (active || reduceMotion.matches) {
+              if (reduceMotion.matches) draw(0, true);
+              return;
+            }
+            active = true;
+            previousTime = 0;
+            frame = requestAnimationFrame(draw);
+          }
+
+          function stop() {
+            active = false;
+            cancelAnimationFrame(frame);
+          }
+
+          resizeCanvas();
+          if ("IntersectionObserver" in window) {
+            const visibilityObserver = new IntersectionObserver(
+              ([entry]) => (entry.isIntersecting ? start() : stop()),
+              { threshold: 0.02 },
+            );
+            visibilityObserver.observe(hero);
+          } else {
+            start();
+          }
+
+          window.addEventListener("resize", resizeCanvas, { passive: true });
+          document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") stop();
+            else if (hero.getBoundingClientRect().bottom > 0) start();
+          });
+
+          if (finePointer.matches && !reduceMotion.matches) {
+            hero.addEventListener("pointermove", (event) => {
+              const bounds = hero.getBoundingClientRect();
+              const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+              const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+              hero.style.setProperty("--hero-shift-x", `${-x * 10}px`);
+              hero.style.setProperty("--hero-shift-y", `${-y * 7}px`);
+              hero.style.setProperty("--sculpture-x", `${x * 22}px`);
+              hero.style.setProperty("--sculpture-y", `${y * 14}px`);
+            });
+            hero.addEventListener("pointerleave", () => {
+              hero.style.setProperty("--hero-shift-x", "0px");
+              hero.style.setProperty("--hero-shift-y", "0px");
+              hero.style.setProperty("--sculpture-x", "0px");
+              hero.style.setProperty("--sculpture-y", "0px");
+            });
+          }
+
+          reduceMotion.addEventListener?.("change", () => {
+            if (reduceMotion.matches) {
+              stop();
+              draw(0, true);
+            } else if (hero.getBoundingClientRect().bottom > 0) {
+              start();
+            }
+          });
+        }
+
+        initHeroAtmosphere();
         document.querySelector("#year").textContent = new Date().getFullYear();
       })();
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5ef1f8f1a339888',t:'MTc5NTQyNTg5MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5ef1f8f1a339888',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5ef3063d962a62d',t:'MTc5NTQyNjU4MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5ef3063d962a62d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
